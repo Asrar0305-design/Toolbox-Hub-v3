@@ -3,7 +3,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Home from "./pages/Home";
+import Home from "@/pages/Home";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import ImageConverter from "./pages/tools/ImageConverter";
 import QRCodeGenerator from "./pages/tools/QRCodeGenerator";
 import JsonFormatter from "./pages/tools/JsonFormatter";
@@ -23,6 +25,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/tools/image-converter" component={ImageConverter} />
       <Route path="/tools/qr-generator" component={QRCodeGenerator} />
       <Route path="/tools/json-formatter" component={JsonFormatter} />
