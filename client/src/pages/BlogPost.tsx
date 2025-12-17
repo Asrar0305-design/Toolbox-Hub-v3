@@ -34,6 +34,13 @@ export default function BlogPost() {
       <main className="container mx-auto px-4 py-16">
         <article className="max-w-3xl mx-auto">
           <header className="mb-12 space-y-6 text-center">
+            <div className="mb-8 aspect-video w-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
             <div className="flex flex-wrap justify-center gap-2">
               {post.tags.map(tag => (
                 <span key={tag} className="bg-primary text-white text-sm font-bold uppercase px-3 py-1 tracking-wider" style={{backgroundColor: '#ff6900', color: '#ffffff'}}>

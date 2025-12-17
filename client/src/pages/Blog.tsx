@@ -38,6 +38,13 @@ export default function Blog() {
             <Link key={post.id} href={`/blog/${post.id}`} className="group block h-full">
               <article className="h-full bg-white border-4 border-black p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
                 <div className="space-y-4">
+                  <div className="aspect-video w-full overflow-hidden border-b-4 border-black">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map(tag => (
                       <span key={tag} className="bg-gray-100 text-xs font-bold uppercase px-2 py-1 tracking-wider" style={{backgroundColor: '#f3f4f6', color: '#000000'}}>
