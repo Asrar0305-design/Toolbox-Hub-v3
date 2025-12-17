@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 
 export default function BlogPost() {
   const [match, params] = useRoute("/blog/:slug");
-  const post = blogPosts.find(p => p.id === params?.slug);
+  const post = blogPosts.find(p => p.slug === params?.slug);
 
   if (!post) return <NotFound />;
 

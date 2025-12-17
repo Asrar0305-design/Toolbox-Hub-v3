@@ -35,7 +35,7 @@ export default function Blog() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
-            <Link key={post.id} href={`/blog/${post.id}`} className="group block h-full">
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="group block h-full">
               <article className="h-full bg-white border-4 border-black p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
                 <div className="space-y-4">
                   <div className="flex flex-wrap gap-2">
