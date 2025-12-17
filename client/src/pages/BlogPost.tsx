@@ -1,88 +1,125 @@
 import { Link, useRoute } from "wouter";
 import { blogPosts } from "@/lib/blog-data";
-import { SeoHead } from "@/components/SeoHead";
-import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { CalendarIcon, Clock, User, ArrowLeft, Share2 } from "lucide-react";
+import { Helmet } from "react-helmet";
 import NotFound from "./NotFound";
+import { SocialShare } from "@/components/SocialShare";
 
 export default function BlogPost() {
   const [match, params] = useRoute("/blog/:slug");
-  const post = blogPosts.find(p => p.id === params?.slug);
+  const slug = params?.slug;
+  const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!post) return <NotFound />;
+  if (!match || !post) {
+    return <NotFound />;
+  }
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans selection:bg-primary selection:text-white" style={{backgroundColor: '#ffffff', color: '#000000'}}>
-      <SeoHead 
-        title={`${post.title} - ToolBox Hub Blog`}
-        description={post.excerpt}
-      />
-      
-      <header className="border-b-4 border-black bg-white sticky top-0 z-50" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <Link href="/blog" className="flex items-center gap-2 group font-bold uppercase tracking-tight text-sm">
-            <div className="bg-black text-white p-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" style={{backgroundColor: '#000000', color: '#ffffff'}}>
-              <ArrowLeft className="w-4 h-4" />
-            </div>
-            <span style={{color: '#000000'}}>Back to Blog</span>
+    <div className="min-h-screen bg-background font-sans">
+      <Helmet>
+        <title>{post.title} - ToolBox Hub</title>
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={`https://www.webtoolboxhub.com${post.image}`} />
+        <meta property="og:type" content="article" />
+        <meta name="author" content={post.author} />
+      </Helmet>
+
+      {/* Header */}
+      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/">
+            <a className="flex items-center gap-2 font-bold text-xl text-primary">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-5 h-5"
+                >
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+              </div>
+              ToolBox Hub
+            </a>
           </Link>
-          <Link href="/" className="font-bold text-xl tracking-tighter uppercase" style={{color: '#000000'}}>
-            ToolBox<span className="text-primary" style={{color: '#ff6900'}}>.Hub</span>
-          </Link>
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="/"><a className="text-sm font-medium hover:text-primary transition-colors">Home</a></Link>
+            <Link href="/about"><a className="text-sm font-medium hover:text-primary transition-colors">About</a></Link>
+            <Link href="/blog"><a className="text-sm font-medium text-primary">Blog</a></Link>
+          </nav>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-16">
-        <article className="max-w-3xl mx-auto">
-          <header className="mb-12 space-y-6 text-center">
-            <div className="mb-8 aspect-video w-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <img 
-                src={post.image} 
+      <main className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <Link href="/blog">
+            <a className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </a>
+          </Link>
+
+          <article>
+            <div className="mb-8">
+              <Badge className="mb-4">{post.category}</Badge>
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6 leading-tight">
+                {post.title}
+              </h1>
+              
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground border-b pb-8">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <span className="font-medium text-foreground">{post.author}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CalendarIcon className="w-4 h-4" />
+                  {post.date}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  {post.readTime}
+                </div>
+              </div>
+            </div>
+
+            <div className="aspect-video w-full overflow-hidden rounded-xl mb-10 bg-muted shadow-sm">
+              <img
+                src={post.image}
                 alt={post.title}
-                className="h-full w-full object-cover"
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="flex flex-wrap justify-center gap-2">
-              {post.tags.map(tag => (
-                <span key={tag} className="bg-primary text-white text-sm font-bold uppercase px-3 py-1 tracking-wider" style={{backgroundColor: '#ff6900', color: '#ffffff'}}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight" style={{color: '#000000'}}>
-              {post.title}
-            </h1>
-            <div className="flex items-center justify-center gap-6 text-gray-500 font-bold text-sm uppercase tracking-wide">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                {post.author}
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                {post.date}
-              </div>
-            </div>
-          </header>
 
-          {/* AdSense Top */}
-          <div className="mb-12 min-h-[100px] bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-sm uppercase font-bold tracking-widest">
-            AdSense Space
+            <div 
+              className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          </article>
+
+          <div className="mt-12 pt-8 border-t">
+            <h3 className="text-lg font-semibold mb-4">Share this article</h3>
+            <SocialShare 
+              url={`https://www.webtoolboxhub.com/blog/${post.slug}`} 
+              title={post.title} 
+            />
           </div>
-
-          <div 
-            className="prose prose-lg prose-neutral max-w-none font-medium prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-a:text-primary prose-img:border-4 prose-img:border-black prose-img:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-
-          {/* AdSense Bottom */}
-          <div className="mt-12 min-h-[250px] bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-sm uppercase font-bold tracking-widest">
-            AdSense Space
-          </div>
-        </article>
+        </div>
       </main>
 
-      <footer className="bg-black text-white py-12 border-t-4 border-black text-center" style={{backgroundColor: '#000000', color: '#ffffff', borderColor: '#000000'}}>
-        <div className="container mx-auto px-4">
-          <p className="font-medium text-gray-400">&copy; 2025 ToolBox Hub. All rights reserved.</p>
+      {/* Footer */}
+      <footer className="border-t bg-white mt-20">
+        <div className="container mx-auto px-4 py-8 text-center text-muted-foreground text-sm">
+          <p>&copy; {new Date().getFullYear()} ToolBox Hub. All rights reserved.</p>
         </div>
       </footer>
     </div>

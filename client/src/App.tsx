@@ -3,9 +3,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Home from "@/pages/Home";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import Home from "./pages/Home";
 import ImageConverter from "./pages/tools/ImageConverter";
 import QRCodeGenerator from "./pages/tools/QRCodeGenerator";
 import JsonFormatter from "./pages/tools/JsonFormatter";
@@ -18,15 +17,14 @@ import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfUse from "./pages/legal/TermsOfUse";
 import Contact from "./pages/legal/Contact";
 import About from "./pages/About";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import { CookieConsent } from "./components/CookieConsent";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/tools/image-converter" component={ImageConverter} />
       <Route path="/tools/qr-generator" component={QRCodeGenerator} />
       <Route path="/tools/json-formatter" component={JsonFormatter} />
@@ -39,6 +37,8 @@ function Router() {
       <Route path="/terms" component={TermsOfUse} />
       <Route path="/contact" component={Contact} />
       <Route path="/about" component={About} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -49,7 +49,7 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light" switchable={false}>
+      <ThemeProvider defaultTheme="light" switchable>
         <TooltipProvider>
           <Toaster />
           <Router />
