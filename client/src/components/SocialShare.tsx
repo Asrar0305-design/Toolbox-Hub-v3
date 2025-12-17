@@ -17,7 +17,8 @@ export function SocialShare({
   className = ""
 }: SocialShareProps) {
   const [location] = useLocation();
-  const currentUrl = url || window.location.origin + location;
+  // Ensure we're running in browser environment
+  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(title);
   const encodedDesc = encodeURIComponent(description);
@@ -49,6 +50,15 @@ export function SocialShare({
     }
   ];
 
+  const handleShare = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    e.preventDefault();
+    if (url.startsWith('mailto:')) {
+      window.location.href = url;
+      return;
+    }
+    window.open(url, '_blank', 'width=600,height=400,noopener,noreferrer');
+  };
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(currentUrl);
@@ -64,15 +74,14 @@ export function SocialShare({
         <a
           key={platform.name}
           href={platform.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={(e) => handleShare(e, platform.url)}
           className="no-underline"
           aria-label={`Share on ${platform.name}`}
         >
           <Button
             variant="outline"
             size="icon"
-            className={`w-10 h-10 rounded-none border-2 border-white bg-transparent text-white hover:bg-white hover:text-black transition-all duration-200`}
+            className={`w-10 h-10 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors`}
           >
             <platform.icon className="w-4 h-4" />
           </Button>
@@ -82,7 +91,7 @@ export function SocialShare({
         variant="outline"
         size="icon"
         onClick={copyToClipboard}
-        className="w-10 h-10 rounded-none border-2 border-white bg-transparent text-white hover:bg-white hover:text-black transition-all duration-200"
+        className="w-10 h-10 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
         aria-label="Copy link"
       >
         <Link2 className="w-4 h-4" />
