@@ -361,3 +361,5 @@ export const blogPosts: BlogPost[] = [
     category: "Privacy"
   }
 ];
+
+export default blogPosts;
