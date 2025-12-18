@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
       <p>Adopting these AI tools is no longer optional for staying competitive. By integrating them into your workflow, you can reclaim hours of your week and focus on the creative, strategic work that truly matters. The future of work is here, and it is intelligent, adaptive, and incredibly productive.</p>
     `,
     author: "ToolBox Team",
-    date: "December 28, 2025",
+    date: "December 17, 2025",
     readTime: "8 min read",
     image: "/images/blog/ai-tools-2025.jpg",
     category: "Technology"
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
       <p>Security is a journey, not a destination. By staying informed about the latest threats and adopting a layered defense strategy, you can enjoy the flexibility of remote work without compromising on safety. Your home office is your castle; defend it accordingly.</p>
     `,
     author: "ToolBox Team",
-    date: "December 24, 2025",
+    date: "December 13, 2025",
     readTime: "9 min read",
     image: "/images/blog/remote-work-security.jpg",
     category: "Security"
@@ -128,7 +128,7 @@ export const blogPosts: BlogPost[] = [
       <p>Every click has a cost. By choosing sustainable technologies and practicing mindful computing, we can ensure that our digital advancement doesn't come at the expense of our planet. The future of technology must be green, or there will be no future at all.</p>
     `,
     author: "ToolBox Team",
-    date: "December 20, 2025",
+    date: "December 9, 2025",
     readTime: "7 min read",
     image: "/images/blog/green-tech.jpg",
     category: "Sustainability"
@@ -168,7 +168,7 @@ export const blogPosts: BlogPost[] = [
       <p>Voice search is about providing immediate, accurate value. By optimizing for natural language, you make your content more accessible to everyone, whether they are typing or talking. The spoken web is here, and it is changing the way we interact with information.</p>
     `,
     author: "ToolBox Team",
-    date: "December 16, 2025",
+    date: "December 7, 2025",
     readTime: "8 min read",
     image: "/images/blog/voice-search-seo.jpg",
     category: "SEO"
@@ -208,7 +208,7 @@ export const blogPosts: BlogPost[] = [
       <p>Web3 is not replacing the entire web, but it is adding a crucial layer of ownership and trust. Understanding these basics is key to navigating the next era of the internet. Whether you are a developer, a creator, or just a user, the principles of decentralization will shape the digital tools you use in the coming decade.</p>
     `,
     author: "ToolBox Team",
-    date: "December 12, 2025",
+    date: "December 3, 2025",
     readTime: "10 min read",
     image: "/images/blog/web3-basics.jpg",
     category: "Technology"
@@ -248,7 +248,7 @@ export const blogPosts: BlogPost[] = [
       <p>A lean PDF is a user-friendly PDF. By implementing these optimization strategies, you ensure that your content is accessible, professional, and fast. In a world where attention spans are short, every second of load time saved is a victory.</p>
     `,
     author: "ToolBox Team",
-    date: "December 10, 2025",
+    date: "November 29, 2025",
     readTime: "7 min read",
     image: "/images/blog/pdf-optimization.jpg",
     category: "Productivity"
@@ -283,7 +283,7 @@ export const blogPosts: BlogPost[] = [
       <p>The rule of thumb: Use JPG for photos, PNG for graphics with transparency, SVG for icons, and WebP (or AVIF) for everything else on the web. By matching the format to the content, you ensure your site looks great and loads fast.</p>
     `,
     author: "ToolBox Team",
-    date: "December 06, 2025",
+    date: "November 23, 2025",
     readTime: "8 min read",
     image: "/images/blog/image-formats.jpg",
     category: "Design"
@@ -315,7 +315,7 @@ export const blogPosts: BlogPost[] = [
       <p>Treat your passwords like the keys to your home. Make them strong, keep them safe, and never give them to strangers. In the digital world, vigilance is the price of safety.</p>
     `,
     author: "ToolBox Team",
-    date: "December 02, 2025",
+    date: "November 17, 2025",
     readTime: "6 min read",
     image: "/images/blog/password-security.jpg",
     category: "Security"
@@ -347,7 +347,7 @@ export const blogPosts: BlogPost[] = [
       <p>QR codes are a versatile tool in the modern marketer's arsenal. When used with purpose and creativity, they provide a seamless portal for customers to connect with your brand.</p>
     `,
     author: "ToolBox Team",
-    date: "November 28, 2025",
+    date: "November 15, 2025",
     readTime: "5 min read",
     image: "/images/blog/qr-code-marketing.jpg",
     category: "Marketing"
@@ -379,7 +379,7 @@ export const blogPosts: BlogPost[] = [
       <p>Both formats have their place. Understanding their strengths allows you to build more efficient and interoperable systems. It's not about which is "better," but which is right for the job.</p>
     `,
     author: "ToolBox Team",
-    date: "November 24, 2025",
+    date: "November 10, 2025",
     readTime: "7 min read",
     image: "/images/blog/json-data.jpg",
     category: "Development"
@@ -412,7 +412,7 @@ export const blogPosts: BlogPost[] = [
       <p>Color is a language. By speaking it fluently, you can design websites that not only look good but also feel right to your users, driving engagement and conversions.</p>
     `,
     author: "ToolBox Team",
-    date: "November 20, 2025",
+    date: "November 07, 2025",
     readTime: "6 min read",
     image: "/images/blog/image-formats.jpg", // Reusing relevant image
     category: "Design"
@@ -443,7 +443,7 @@ export const blogPosts: BlogPost[] = [
       <p>Learning Git has a learning curve, but the payoff is immense. It gives you the confidence to experiment, knowing you can always undo your mistakes. It is the key to collaborating with the global developer community.</p>
     `,
     author: "ToolBox Team",
-    date: "November 16, 2025",
+    date: "November 05, 2025",
     readTime: "8 min read",
     image: "/images/blog/json-data.jpg", // Reusing relevant image
     category: "Development"
@@ -472,7 +472,7 @@ export const blogPosts: BlogPost[] = [
       <p>Start small, be consistent, and focus on the user. Good SEO is ultimately about providing a great user experience. It's a marathon, not a sprint, but the long-term traffic is worth the effort.</p>
     `,
     author: "ToolBox Team",
-    date: "November 12, 2025",
+    date: "November 05, 2025",
     readTime: "7 min read",
     image: "/images/blog/voice-search-seo.jpg", // Reusing relevant image
     category: "Marketing"
@@ -501,7 +501,7 @@ export const blogPosts: BlogPost[] = [
       <p>Remote work requires a professional mindset. By mastering your schedule and your tools, you can enjoy the lifestyle without sacrificing your career. Freedom is not the absence of rules, but the ability to set your own.</p>
     `,
     author: "ToolBox Team",
-    date: "November 08, 2025",
+    date: "November 04, 2025",
     readTime: "6 min read",
     image: "/images/blog/remote-work-security.jpg", // Reusing relevant image
     category: "Lifestyle"
@@ -530,7 +530,7 @@ export const blogPosts: BlogPost[] = [
       <p>Privacy is a fundamental human right. Protecting it requires vigilance, but it is essential for a free and open society. It is time to stop being the product and start being the user again.</p>
     `,
     author: "ToolBox Team",
-    date: "November 04, 2025",
+    date: "November 01, 2025",
     readTime: "7 min read",
     image: "/images/blog/password-security.jpg", // Reusing relevant image
     category: "Privacy"
