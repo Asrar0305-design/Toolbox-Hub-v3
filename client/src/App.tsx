@@ -20,6 +20,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import { CookieConsent } from "./components/CookieConsent";
+import { Analytics } from "@vercel/analytics/react";
 
 function Router() {
   return (
@@ -51,6 +52,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light" switchable>
         <TooltipProvider>
+          <Analytics />
           <Toaster />
           <Router />
           <CookieConsent />
