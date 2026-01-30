@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Image as ImageIcon, FileText, QrCode, FileJson, Code2, Zap, Lock, Type, Scale, Youtube, CheckCircle2, ShieldCheck, Globe2 } from "lucide-react";
+import { ArrowRight, Image as ImageIcon, FileText, QrCode, FileJson, Code2, Zap, Lock, Type, Scale, Youtube, CheckCircle2, ShieldCheck, Globe2, Eraser, Binary, Palette, Hash, FileEdit, Table, AlignLeft, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialShare } from "@/components/SocialShare";
 import { SeoHead } from "@/components/SeoHead";
@@ -76,6 +76,78 @@ const tools = [
     href: "/tools/youtube-thumbnail",
     color: "bg-red-600",
     image: "/images/category-youtube-tools.png"
+  },
+  {
+    id: "background-remover",
+    title: "Background Remover",
+    description: "Remove image backgrounds automatically with AI technology.",
+    icon: Eraser,
+    href: "/tools/background-remover",
+    color: "bg-purple-500",
+    image: "/images/category-image-processing.png"
+  },
+  {
+    id: "base64-encoder",
+    title: "Base64 Encoder",
+    description: "Encode and decode Base64 data for APIs and data URIs.",
+    icon: Binary,
+    href: "/tools/base64-encoder",
+    color: "bg-cyan-600",
+    image: "/images/category-dev-tools.png"
+  },
+  {
+    id: "color-picker",
+    title: "Color Picker",
+    description: "Pick colors from images and convert HEX, RGB, HSL formats.",
+    icon: Palette,
+    href: "/tools/color-picker",
+    color: "bg-pink-600",
+    image: "/images/category-image-processing.png"
+  },
+  {
+    id: "hash-generator",
+    title: "Hash Generator",
+    description: "Generate MD5, SHA-1, SHA-256 hashes for security verification.",
+    icon: Hash,
+    href: "/tools/hash-generator",
+    color: "bg-indigo-700",
+    image: "/images/category-dev-tools.png"
+  },
+  {
+    id: "markdown-editor",
+    title: "Markdown Editor",
+    description: "Write and preview Markdown with live rendering instantly.",
+    icon: FileEdit,
+    href: "/tools/markdown-editor",
+    color: "bg-orange-500",
+    image: "/images/category-text-tools.png"
+  },
+  {
+    id: "csv-json-converter",
+    title: "CSV to JSON",
+    description: "Convert between CSV and JSON formats for data processing.",
+    icon: Table,
+    href: "/tools/csv-json-converter",
+    color: "bg-green-600",
+    image: "/images/category-dev-tools.png"
+  },
+  {
+    id: "lorem-ipsum",
+    title: "Lorem Ipsum",
+    description: "Generate placeholder text for design mockups and layouts.",
+    icon: AlignLeft,
+    href: "/tools/lorem-ipsum",
+    color: "bg-gray-600",
+    image: "/images/category-text-tools.png"
+  },
+  {
+    id: "image-resizer",
+    title: "Image Resizer",
+    description: "Resize images to specific dimensions for web and social media.",
+    icon: Maximize2,
+    href: "/tools/image-resizer",
+    color: "bg-indigo-600",
+    image: "/images/category-image-processing.png"
   }
 ];
 
@@ -332,6 +404,82 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-black uppercase">Always Free</h3>
                 <p className="font-medium opacity-90">No subscriptions, no hidden fees. Just open source utilities for everyone.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Popular Use Cases Section - Rich Content for SEO */}
+        <section className="py-24 bg-white border-t-4 border-black" style={{backgroundColor: '#ffffff', borderColor: '#000000'}}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6" style={{color: '#000000'}}>
+                Popular <span className="text-primary" style={{color: '#ff6900'}}>Use Cases</span>
+              </h2>
+              <p className="text-xl text-gray-600 font-medium">
+                Discover how professionals use ToolBox Hub to streamline their workflows and boost productivity.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-gray-50 border-4 border-black p-8 space-y-4" style={{borderColor: '#000000', backgroundColor: '#f9fafb'}}>
+                <div className="w-12 h-12 bg-primary text-white flex items-center justify-center border-2 border-black" style={{backgroundColor: '#ff6900', borderColor: '#000000'}}>
+                  <ImageIcon className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase" style={{color: '#000000'}}>E-Commerce Sellers</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  Convert product images to WebP for faster loading, remove backgrounds for clean listings, and resize images for different marketplaces like Amazon and eBay.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border-4 border-black p-8 space-y-4" style={{borderColor: '#000000', backgroundColor: '#f9fafb'}}>
+                <div className="w-12 h-12 bg-black text-white flex items-center justify-center border-2 border-black" style={{backgroundColor: '#000000', borderColor: '#000000'}}>
+                  <Code2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase" style={{color: '#000000'}}>Web Developers</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  Format and validate JSON APIs, generate secure passwords for databases, convert CSV data to JSON, and encode Base64 for data URIs in CSS.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border-4 border-black p-8 space-y-4" style={{borderColor: '#000000', backgroundColor: '#f9fafb'}}>
+                <div className="w-12 h-12 bg-purple-600 text-white flex items-center justify-center border-2 border-black" style={{backgroundColor: '#9333ea', borderColor: '#000000'}}>
+                  <FileText className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase" style={{color: '#000000'}}>Content Creators</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  Count words for SEO optimization, download YouTube thumbnails for inspiration, generate QR codes for social media, and merge PDFs for digital products.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border-4 border-black p-8 space-y-4" style={{borderColor: '#000000', backgroundColor: '#f9fafb'}}>
+                <div className="w-12 h-12 bg-green-600 text-white flex items-center justify-center border-2 border-black" style={{backgroundColor: '#16a34a', borderColor: '#000000'}}>
+                  <Type className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase" style={{color: '#000000'}}>Designers</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  Pick colors from images for brand consistency, generate Lorem Ipsum for mockups, resize images for responsive designs, and create QR codes for print materials.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border-4 border-black p-8 space-y-4" style={{borderColor: '#000000', backgroundColor: '#f9fafb'}}>
+                <div className="w-12 h-12 bg-red-600 text-white flex items-center justify-center border-2 border-black" style={{backgroundColor: '#dc2626', borderColor: '#000000'}}>
+                  <Lock className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase" style={{color: '#000000'}}>Security Professionals</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  Generate strong passwords for clients, create SHA-256 hashes for file verification, encode sensitive data in Base64, and secure documents with PDF tools.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border-4 border-black p-8 space-y-4" style={{borderColor: '#000000', backgroundColor: '#f9fafb'}}>
+                <div className="w-12 h-12 bg-orange-600 text-white flex items-center justify-center border-2 border-black" style={{backgroundColor: '#ea580c', borderColor: '#000000'}}>
+                  <Scale className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black uppercase" style={{color: '#000000'}}>Students & Educators</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">
+                  Convert units for science projects, count words for essays, merge PDFs for assignments, write Markdown for documentation, and generate QR codes for presentations.
+                </p>
               </div>
             </div>
           </div>

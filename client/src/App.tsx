@@ -13,6 +13,14 @@ import PasswordGenerator from "./pages/tools/PasswordGenerator";
 import WordCounter from "./pages/tools/WordCounter";
 import UnitConverter from "./pages/tools/UnitConverter";
 import YoutubeThumbnail from "./pages/tools/YoutubeThumbnail";
+import BackgroundRemover from "./pages/tools/BackgroundRemover";
+import Base64Encoder from "./pages/tools/Base64Encoder";
+import ColorPicker from "./pages/tools/ColorPicker";
+import HashGenerator from "./pages/tools/HashGenerator";
+import MarkdownEditor from "./pages/tools/MarkdownEditor";
+import CsvJsonConverter from "./pages/tools/CsvJsonConverter";
+import LoremIpsum from "./pages/tools/LoremIpsum";
+import ImageResizer from "./pages/tools/ImageResizer";
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfUse from "./pages/legal/TermsOfUse";
 import Contact from "./pages/legal/Contact";
@@ -36,6 +44,14 @@ function Router() {
       <Route path="/tools/word-counter" component={WordCounter} />
       <Route path="/tools/unit-converter" component={UnitConverter} />
       <Route path="/tools/youtube-thumbnail" component={YoutubeThumbnail} />
+      <Route path="/tools/background-remover" component={BackgroundRemover} />
+      <Route path="/tools/base64-encoder" component={Base64Encoder} />
+      <Route path="/tools/color-picker" component={ColorPicker} />
+      <Route path="/tools/hash-generator" component={HashGenerator} />
+      <Route path="/tools/markdown-editor" component={MarkdownEditor} />
+      <Route path="/tools/csv-json-converter" component={CsvJsonConverter} />
+      <Route path="/tools/lorem-ipsum" component={LoremIpsum} />
+      <Route path="/tools/image-resizer" component={ImageResizer} />
       <Route path="/privacy" component={PrivacyPolicy} />
       <Route path="/terms" component={TermsOfUse} />
       <Route path="/contact" component={Contact} />
