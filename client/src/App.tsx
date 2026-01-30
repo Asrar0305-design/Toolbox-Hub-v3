@@ -19,6 +19,8 @@ import Contact from "./pages/legal/Contact";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import FAQ from "./pages/FAQ";
+import HelpCenter from "./pages/HelpCenter";
 import { CookieConsent } from "./components/CookieConsent";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -40,6 +42,8 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/faq" component={FAQ} />
+      <Route path="/help" component={HelpCenter} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

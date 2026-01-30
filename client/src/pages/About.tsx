@@ -105,6 +105,87 @@ export default function About() {
           </div>
         </div>
 
+        {/* Our Mission Section */}
+        <div className="space-y-6">
+          <h2 className="text-3xl font-black uppercase tracking-tighter border-b-4 border-black pb-2 inline-block">
+            Our Mission
+          </h2>
+          <div className="prose prose-lg text-muted-foreground">
+            <p>
+              At ToolBox Hub, we believe that access to quality digital tools should be a right, not a privilege. 
+              Too often, simple tasks like converting an image or formatting JSON require expensive software subscriptions, 
+              complicated installations, or compromising your privacy by uploading sensitive files to unknown servers.
+            </p>
+            <p>
+              Our mission is to change that. We're building a comprehensive platform of professional-grade utilities that are:
+            </p>
+            <ul className="list-disc list-inside space-y-2 mt-4">
+              <li><strong>Free Forever:</strong> No subscriptions, no premium tiers, no hidden costs.</li>
+              <li><strong>Privacy-First:</strong> Your data never leaves your device with our client-side processing.</li>
+              <li><strong>Accessible to All:</strong> No registration required, works on any device with a browser.</li>
+              <li><strong>Fast and Reliable:</strong> Instant processing with no upload queues or waiting times.</li>
+              <li><strong>Open and Transparent:</strong> We believe in honest communication about how our tools work.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Who We Serve Section */}
+        <div className="space-y-6">
+          <h2 className="text-3xl font-black uppercase tracking-tighter border-b-4 border-black pb-2 inline-block">
+            Who We Serve
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 border-4 border-black bg-white">
+              <h3 className="text-xl font-bold uppercase mb-3">Students & Educators</h3>
+              <p className="text-muted-foreground">
+                From formatting research data to creating QR codes for classroom materials, 
+                our tools help students and teachers work more efficiently without budget constraints.
+              </p>
+            </div>
+            <div className="p-6 border-4 border-black bg-white">
+              <h3 className="text-xl font-bold uppercase mb-3">Developers & Designers</h3>
+              <p className="text-muted-foreground">
+                Professional-grade tools for image optimization, JSON validation, and code formatting 
+                that integrate seamlessly into your workflow without leaving the browser.
+              </p>
+            </div>
+            <div className="p-6 border-4 border-black bg-white">
+              <h3 className="text-xl font-bold uppercase mb-3">Small Businesses</h3>
+              <p className="text-muted-foreground">
+                Enterprise-quality utilities without enterprise prices. Generate QR codes for marketing, 
+                merge PDFs for reports, and manage digital assets efficiently.
+              </p>
+            </div>
+            <div className="p-6 border-4 border-black bg-white">
+              <h3 className="text-xl font-bold uppercase mb-3">Content Creators</h3>
+              <p className="text-muted-foreground">
+                Streamline your content production with tools for image conversion, thumbnail downloading, 
+                word counting, and more—all optimized for creative workflows.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Why Trust Us Section */}
+        <div className="space-y-6">
+          <h2 className="text-3xl font-black uppercase tracking-tighter border-b-4 border-black pb-2 inline-block">
+            Why Trust Us
+          </h2>
+          <div className="prose prose-lg text-muted-foreground">
+            <p>
+              In a world where data breaches and privacy violations make headlines daily, trust is earned, not given. 
+              Here's how we've built ToolBox Hub with your trust in mind:
+            </p>
+            <ul className="list-disc list-inside space-y-2 mt-4">
+              <li><strong>Transparent Processing:</strong> Most of our tools use WebAssembly to process data entirely in your browser. Your files never touch our servers.</li>
+              <li><strong>No Data Collection:</strong> We don't require accounts, so we don't collect personal information. No email addresses, no passwords, no tracking beyond basic analytics.</li>
+              <li><strong>Open Communication:</strong> We clearly explain how each tool works and what happens to your data in our comprehensive privacy policy.</li>
+              <li><strong>Regular Updates:</strong> We continuously improve our tools based on user feedback and emerging security best practices.</li>
+              <li><strong>Community-Driven:</strong> Our roadmap is shaped by real user needs, not corporate agendas or profit maximization.</li>
+            </ul>
+          </div>
+        </div>
+
         {/* Contact Section */}
         <div className="bg-gray-100 p-8 md:p-12 text-center border-4 border-black">
           <h3 className="text-2xl font-bold uppercase mb-4">Join Our Community</h3>
@@ -112,12 +193,20 @@ export default function About() {
             We are constantly adding new tools based on user feedback. If you have a suggestion, found a bug, 
             or just want to say hello, we'd love to hear from you. Your input helps us make the web a more productive place.
           </p>
-          <a 
-            href="/contact" 
-            className="inline-block bg-black text-white font-bold uppercase tracking-wider py-4 px-8 hover:bg-primary transition-colors"
-          >
-            Contact Us
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/contact" 
+              className="inline-block bg-black text-white font-bold uppercase tracking-wider py-4 px-8 hover:bg-primary transition-colors"
+            >
+              Contact Us
+            </a>
+            <a 
+              href="/help" 
+              className="inline-block bg-white text-black font-bold uppercase tracking-wider py-4 px-8 border-4 border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+            >
+              Help Center
+            </a>
+          </div>
         </div>
       </div>
     </ToolLayout>

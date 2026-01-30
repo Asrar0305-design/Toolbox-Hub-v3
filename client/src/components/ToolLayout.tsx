@@ -44,8 +44,8 @@ export function ToolLayout({ title, description, children, className }: ToolLayo
           </div>
 
           {/* Top Ad Unit */}
-          <div className="mb-8 min-h-[100px] bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center text-muted-foreground text-sm uppercase font-bold tracking-widest" style={{backgroundColor: '#f3f4f6', borderColor: '#d1d5db', color: '#6b7280'}}>
-            AdSense Space (Top Banner)
+          <div className="mb-8" id="top-ad-banner">
+            {/* AdSense ad unit will be placed here */}
           </div>
 
           <div className={cn("bg-white border-4 border-black p-6 md:p-12 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]", className)} style={{backgroundColor: '#ffffff', borderColor: '#000000'}}>
@@ -53,8 +53,8 @@ export function ToolLayout({ title, description, children, className }: ToolLayo
           </div>
 
           {/* Bottom Ad Unit */}
-          <div className="mt-12 min-h-[250px] bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center text-muted-foreground text-sm uppercase font-bold tracking-widest" style={{backgroundColor: '#f3f4f6', borderColor: '#d1d5db', color: '#6b7280'}}>
-            AdSense Space (Bottom Rect)
+          <div className="mt-12" id="bottom-ad-rect">
+            {/* AdSense ad unit will be placed here */}
           </div>
         </div>
       </main>
