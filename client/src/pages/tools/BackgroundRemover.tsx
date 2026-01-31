@@ -32,20 +32,27 @@ export default function BackgroundRemover() {
     
     setIsProcessing(true);
     setError("");
-    setProgress("Loading AI model...");
+    setProgress("Preparing image...");
     
     try {
       // Convert data URL to Blob
       const response = await fetch(originalImage);
       const blob = await response.blob();
       
-      setProgress("Processing image...");
+      setProgress("Loading AI model (first time only, ~50MB)...");
       
       // Remove background using @imgly/background-removal
       const resultBlob = await removeBackground(blob, {
         progress: (key, current, total) => {
           const percentage = Math.round((current / total) * 100);
-          setProgress(`${key}: ${percentage}%`);
+          // Provide more descriptive progress messages
+          if (key === 'fetch:model') {
+            setProgress(`Downloading AI model: ${percentage}% (first time only)`);
+          } else if (key === 'compute:inference') {
+            setProgress(`Processing image with AI: ${percentage}%`);
+          } else {
+            setProgress(`${key}: ${percentage}%`);
+          }
         }
       });
       
@@ -152,8 +159,16 @@ export default function BackgroundRemover() {
 
               {/* Progress/Error */}
               {progress && (
-                <div className="p-4 bg-blue-50 border-2 border-blue-500 text-blue-800 font-medium">
-                  {progress}
+                <div className="p-4 bg-blue-50 border-2 border-blue-500 text-blue-800 font-medium flex items-center gap-3">
+                  {isProcessing && (
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-800"></div>
+                  )}
+                  <div>
+                    <div className="font-bold">{progress}</div>
+                    {progress.includes('first time') && (
+                      <div className="text-sm mt-1">This may take 1-3 minutes depending on your internet speed. The model will be cached for future use.</div>
+                    )}
+                  </div>
                 </div>
               )}
               
