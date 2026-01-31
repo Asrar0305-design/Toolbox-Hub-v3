@@ -1,7 +1,7 @@
 import { ToolLayout } from "@/components/ToolLayout";
 import { Button } from "@/components/ui/button";
 import { Eraser, Upload, Download, X } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { pipeline, env } from "@xenova/transformers";
 
 // Configure transformers.js
@@ -14,41 +14,10 @@ export default function BackgroundRemover() {
   const [fileName, setFileName] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState<string>("");
+  const [progressPercent, setProgressPercent] = useState<number>(0);
   const [error, setError] = useState<string>("");
-  const [isModelLoaded, setIsModelLoaded] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const segmenterRef = useRef<any>(null);
-
-  // Initialize the model
-  useEffect(() => {
-    const loadModel = async () => {
-      try {
-        setProgress("Initializing AI model (first time only)...");
-        // Load the image segmentation pipeline with RMBG-1.4 model
-        segmenterRef.current = await pipeline(
-          'image-segmentation',
-          'briaai/RMBG-1.4',
-          {
-            progress_callback: (progress: any) => {
-              if (progress.status === 'downloading') {
-                const percent = Math.round((progress.loaded / progress.total) * 100);
-                setProgress(`Downloading model: ${percent}% (${Math.round(progress.loaded / 1024 / 1024)}MB / ${Math.round(progress.total / 1024 / 1024)}MB)`);
-              } else if (progress.status === 'loading') {
-                setProgress('Loading model into memory...');
-              }
-            }
-          }
-        );
-        setIsModelLoaded(true);
-        setProgress("");
-      } catch (err) {
-        console.error('Error loading model:', err);
-        setError('Failed to load AI model. Please refresh the page and try again.');
-      }
-    };
-
-    loadModel();
-  }, []);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -65,13 +34,42 @@ export default function BackgroundRemover() {
   };
 
   const removeBackground = async () => {
-    if (!originalImage || !segmenterRef.current) return;
+    if (!originalImage) return;
     
     setIsProcessing(true);
     setError("");
-    setProgress("Processing image with AI...");
+    setProgressPercent(0);
     
     try {
+      // Load model if not already loaded (LAZY LOADING)
+      if (!segmenterRef.current) {
+        setProgress("Downloading AI model...");
+        segmenterRef.current = await pipeline(
+          'image-segmentation',
+          'briaai/RMBG-1.4',
+          {
+            progress_callback: (progress: any) => {
+              if (progress.status === 'downloading') {
+                const percent = Math.round((progress.loaded / progress.total) * 100);
+                setProgressPercent(percent);
+                const loadedMB = Math.round(progress.loaded / 1024 / 1024);
+                const totalMB = Math.round(progress.total / 1024 / 1024);
+                setProgress(`Downloading AI model: ${percent}% (${loadedMB}MB / ${totalMB}MB)`);
+              } else if (progress.status === 'loading') {
+                setProgressPercent(95);
+                setProgress('Loading model into memory...');
+              } else if (progress.status === 'ready') {
+                setProgressPercent(100);
+                setProgress('Model ready!');
+              }
+            }
+          }
+        );
+      }
+
+      setProgress("Processing image with AI...");
+      setProgressPercent(100);
+      
       // Load image
       const img = new Image();
       await new Promise((resolve, reject) => {
@@ -83,7 +81,7 @@ export default function BackgroundRemover() {
       // Process with AI model
       const output = await segmenterRef.current(img);
       
-      setProgress("Finalizing...");
+      setProgress("Creating transparent image...");
 
       // Create canvas to combine mask with original image
       const canvas = document.createElement('canvas');
@@ -101,7 +99,6 @@ export default function BackgroundRemover() {
       const data = imageData.data;
 
       // Apply mask from AI model
-      // The output contains a mask - we need to use it to make background transparent
       const mask = output[0].mask;
       
       // Create a temporary canvas for the mask
@@ -118,9 +115,7 @@ export default function BackgroundRemover() {
 
       // Apply mask to make background transparent
       for (let i = 0; i < data.length; i += 4) {
-        // Use the red channel of the mask (they're all the same for grayscale)
         const maskValue = maskData.data[i];
-        // Set alpha channel based on mask value
         data[i + 3] = maskValue;
       }
 
@@ -132,7 +127,11 @@ export default function BackgroundRemover() {
           const url = URL.createObjectURL(blob);
           setProcessedImage(url);
           setProgress("Complete!");
-          setTimeout(() => setProgress(""), 2000);
+          setProgressPercent(100);
+          setTimeout(() => {
+            setProgress("");
+            setProgressPercent(0);
+          }, 2000);
         } else {
           throw new Error('Failed to create image blob');
         }
@@ -144,6 +143,7 @@ export default function BackgroundRemover() {
       setError(err instanceof Error ? err.message : 'Failed to remove background');
       setIsProcessing(false);
       setProgress("");
+      setProgressPercent(0);
     }
   };
 
@@ -163,6 +163,8 @@ export default function BackgroundRemover() {
     setProcessedImage(null);
     setFileName("");
     setError("");
+    setProgress("");
+    setProgressPercent(0);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -175,21 +177,6 @@ export default function BackgroundRemover() {
       icon={Eraser}
     >
       <div className="max-w-6xl mx-auto space-y-8">
-        {/* Model Loading Status */}
-        {!isModelLoaded && !error && (
-          <div className="bg-blue-50 border-4 border-blue-500 p-6">
-            <div className="flex items-center gap-3">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-800"></div>
-              <div>
-                <div className="font-black text-lg">{progress || "Initializing AI model..."}</div>
-                <p className="text-sm text-blue-800 mt-1">
-                  First-time setup: Downloading professional AI model (~40MB). This happens once and will be cached for future use.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Upload Section */}
         <div className="bg-white border-4 border-black p-8" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
           <h2 className="text-2xl font-black uppercase mb-4">Upload Image</h2>
@@ -201,26 +188,19 @@ export default function BackgroundRemover() {
             onChange={handleFileSelect}
             className="hidden"
             id="background-remover-upload"
-            disabled={!isModelLoaded}
           />
           
           {!originalImage ? (
             <label
               htmlFor="background-remover-upload"
-              className={`flex flex-col items-center justify-center border-4 border-dashed border-black p-12 transition-colors ${
-                isModelLoaded ? 'cursor-pointer hover:bg-gray-50' : 'cursor-not-allowed opacity-50'
-              }`}
+              className="flex flex-col items-center justify-center border-4 border-dashed border-black p-12 cursor-pointer hover:bg-gray-50 transition-colors"
               style={{borderColor: '#000000'}}
             >
               <Upload className="w-16 h-16 mb-4 text-purple-500" />
-              <p className="text-lg font-bold mb-2">
-                {isModelLoaded ? 'Click to upload an image' : 'Loading AI model...'}
-              </p>
+              <p className="text-lg font-bold mb-2">Click to upload an image</p>
               <p className="text-gray-600 font-medium">Supports PNG, JPG, WEBP</p>
-              <p className="text-sm text-gray-500 mt-2">
-                {isModelLoaded 
-                  ? '✅ AI model ready - Unlimited usage, 100% free!' 
-                  : 'Please wait while the AI model loads...'}
+              <p className="text-sm text-purple-600 mt-2 font-bold">
+                ✨ AI model loads automatically when you process your first image
               </p>
             </label>
           ) : (
@@ -258,13 +238,34 @@ export default function BackgroundRemover() {
                 )}
               </div>
 
-              {/* Progress */}
+              {/* Smart Progress Bar */}
               {progress && (
-                <div className="p-4 bg-blue-50 border-2 border-blue-500 text-blue-800 font-medium flex items-center gap-3">
-                  {isProcessing && (
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-800"></div>
-                  )}
-                  <div className="font-bold">{progress}</div>
+                <div className="space-y-3">
+                  <div className="p-4 bg-blue-50 border-2 border-blue-500 text-blue-900">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-800"></div>
+                      <div className="font-bold text-lg">{progress}</div>
+                    </div>
+                    
+                    {/* Progress Bar */}
+                    {progressPercent > 0 && (
+                      <div className="space-y-2">
+                        <div className="w-full bg-blue-200 rounded-full h-6 border-2 border-blue-600 overflow-hidden">
+                          <div 
+                            className="bg-gradient-to-r from-blue-500 to-purple-500 h-full transition-all duration-300 flex items-center justify-center text-white font-black text-sm"
+                            style={{width: `${progressPercent}%`}}
+                          >
+                            {progressPercent}%
+                          </div>
+                        </div>
+                        <p className="text-sm text-blue-700 font-medium">
+                          {progressPercent < 100 
+                            ? "First-time setup - AI model is downloading and will be cached for instant future use" 
+                            : "Processing your image..."}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
               
@@ -279,7 +280,7 @@ export default function BackgroundRemover() {
                 {!processedImage ? (
                   <Button
                     onClick={removeBackground}
-                    disabled={isProcessing || !isModelLoaded}
+                    disabled={isProcessing}
                     className="flex-1 bg-purple-500 hover:bg-purple-600 text-white border-4 border-black font-black uppercase py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{borderColor: '#000000'}}
                   >
@@ -325,12 +326,10 @@ export default function BackgroundRemover() {
         <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-4 border-black p-8" style={{borderColor: '#000000'}}>
           <h3 className="text-xl font-black uppercase mb-4">🤖 Professional AI Technology</h3>
           <p className="text-gray-700 font-medium mb-4">
-            This tool uses <strong>RMBG-1.4</strong>, a state-of-the-art AI model from BRIA AI, specifically designed for professional background removal. 
-            It intelligently detects and separates foreground subjects from ANY background - whether simple or complex!
+            This tool uses <strong>RMBG-1.4</strong>, a state-of-the-art AI model from BRIA AI. The model downloads automatically when you process your first image (~40MB, takes 2-3 minutes) and is then cached forever for instant future use!
           </p>
           
-          <h4 className="font-black uppercase mb-2 mt-6">Works With:</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
             <div className="bg-white border-2 border-black p-3 text-center font-bold" style={{borderColor: '#000000'}}>
               ✅ People & Portraits
             </div>
@@ -341,61 +340,15 @@ export default function BackgroundRemover() {
               ✅ Animals & Pets
             </div>
             <div className="bg-white border-2 border-black p-3 text-center font-bold" style={{borderColor: '#000000'}}>
-              ✅ Vehicles & Cars
-            </div>
-            <div className="bg-white border-2 border-black p-3 text-center font-bold" style={{borderColor: '#000000'}}>
-              ✅ Complex Backgrounds
-            </div>
-            <div className="bg-white border-2 border-black p-3 text-center font-bold" style={{borderColor: '#000000'}}>
-              ✅ Natural Scenes
-            </div>
-            <div className="bg-white border-2 border-black p-3 text-center font-bold" style={{borderColor: '#000000'}}>
-              ✅ Patterns & Textures
-            </div>
-            <div className="bg-white border-2 border-black p-3 text-center font-bold" style={{borderColor: '#000000'}}>
               ✅ Any Background!
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-green-50 border-2 border-green-600">
+          <div className="p-4 bg-green-50 border-2 border-green-600">
             <p className="text-sm font-medium text-green-900">
-              <strong>✨ Completely Free & Unlimited:</strong> The AI model downloads once (~40MB) and is cached in your browser forever. 
-              After the first load, you can use it unlimited times with no restrictions, no API calls, and no costs!
+              <strong>✨ Completely Free & Unlimited:</strong> First image takes 2-3 minutes (downloads AI model with progress bar). After that, all images process in 5-10 seconds. Unlimited usage forever!
             </p>
           </div>
-        </div>
-
-        {/* Use Cases */}
-        <div className="bg-white border-4 border-black p-8" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
-          <h3 className="text-xl font-black uppercase mb-4">Perfect For</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="border-2 border-black p-4" style={{borderColor: '#000000'}}>
-              <h4 className="font-black mb-2">E-Commerce</h4>
-              <p className="text-gray-600 font-medium">Create professional product photos with clean, transparent backgrounds for online stores.</p>
-            </div>
-            <div className="border-2 border-black p-4" style={{borderColor: '#000000'}}>
-              <h4 className="font-black mb-2">Content Creation</h4>
-              <p className="text-gray-600 font-medium">Remove backgrounds from photos for social media, YouTube thumbnails, and marketing materials.</p>
-            </div>
-            <div className="border-2 border-black p-4" style={{borderColor: '#000000'}}>
-              <h4 className="font-black mb-2">Graphic Design</h4>
-              <p className="text-gray-600 font-medium">Extract subjects for use in posters, flyers, presentations, and composite images.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Tips */}
-        <div className="bg-white border-4 border-black p-8" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
-          <h3 className="text-xl font-black uppercase mb-4">Tips for Best Results</h3>
-          <ul className="space-y-2 text-gray-600 font-medium">
-            <li>• <strong>Any background works</strong> - The AI handles complex scenes automatically</li>
-            <li>• <strong>Higher resolution = better quality</strong> - Use the best quality images you have</li>
-            <li>• <strong>Clear subjects</strong> - Make sure your subject is in focus</li>
-            <li>• <strong>Good lighting</strong> - Well-lit photos produce cleaner results</li>
-            <li>• <strong>First use takes longer</strong> - Model downloads once (~40MB), then it's instant</li>
-            <li>• <strong>100% private</strong> - Everything processes in your browser, no uploads</li>
-            <li>• <strong>Unlimited usage</strong> - Use as many times as you want, completely free!</li>
-          </ul>
         </div>
       </div>
     </ToolLayout>
