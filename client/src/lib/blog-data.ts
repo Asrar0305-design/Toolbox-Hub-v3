@@ -847,7 +847,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 07, 2025",
     readTime: "6 min read",
-    image: "/images/blog/color-psychology.png"
+    image: "/images/blog/color-psychology.png",
     category: "Design"
   },
   {
@@ -878,7 +878,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 05, 2025",
     readTime: "8 min read",
-    image: "/images/blog/git-basics.png"
+    image: "/images/blog/git-basics.png",
     category: "Development"
   },
   {
@@ -907,7 +907,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 05, 2025",
     readTime: "7 min read",
-    image: "/images/blog/seo-small-business.png"
+    image: "/images/blog/seo-small-business.png",
     category: "Marketing"
   },
   {
@@ -936,7 +936,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 04, 2025",
     readTime: "6 min read",
-    image: "/images/blog/digital-nomad.png"
+    image: "/images/blog/digital-nomad.png",
     category: "Lifestyle"
   },
   {
@@ -965,7 +965,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 01, 2025",
     readTime: "7 min read",
-    image: "/images/blog/digital-privacy.png"
+    image: "/images/blog/digital-privacy.png",
     category: "Privacy"
   }
 ];
