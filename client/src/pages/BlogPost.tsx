@@ -113,6 +113,36 @@ export default function BlogPost() {
               title={post.title} 
             />
           </div>
+
+          {/* Related Posts */}
+          <div className="mt-16 pt-8 border-t">
+            <h3 className="text-2xl font-bold mb-8">Related Articles</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {blogPosts
+                .filter(p => p.slug !== post.slug && p.category === post.category)
+                .slice(0, 3)
+                .map(relatedPost => (
+                  <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`}>
+                    <a className="group block bg-white rounded-xl border hover:shadow-lg transition-all overflow-hidden">
+                      <div className="aspect-video overflow-hidden">
+                        <img 
+                          src={relatedPost.image} 
+                          alt={relatedPost.title}
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <Badge className="mb-2 text-xs">{relatedPost.category}</Badge>
+                        <h4 className="font-bold text-sm mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                          {relatedPost.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground">{relatedPost.readTime}</p>
+                      </div>
+                    </a>
+                  </Link>
+                ))}
+            </div>
+          </div>
         </div>
       </main>
 
