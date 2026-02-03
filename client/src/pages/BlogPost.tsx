@@ -123,7 +123,7 @@ export default function BlogPost() {
                 .slice(0, 3)
                 .map(relatedPost => (
                   <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`}>
-                    <a className="group block bg-white rounded-xl border hover:shadow-lg transition-all overflow-hidden">
+                    <div className="group block bg-white rounded-xl border hover:shadow-lg transition-all overflow-hidden cursor-pointer">
                       <div className="aspect-video overflow-hidden">
                         <img 
                           src={relatedPost.image} 
@@ -138,7 +138,7 @@ export default function BlogPost() {
                         </h4>
                         <p className="text-xs text-muted-foreground">{relatedPost.readTime}</p>
                       </div>
-                    </a>
+                    </div>
                   </Link>
                 ))}
             </div>
