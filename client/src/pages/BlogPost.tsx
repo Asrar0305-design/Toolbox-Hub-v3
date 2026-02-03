@@ -101,7 +101,7 @@ export default function BlogPost() {
             </div>
 
             <div 
-              className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl"
+              className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl prose-strong:font-bold prose-strong:text-foreground"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>
