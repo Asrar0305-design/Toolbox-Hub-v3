@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 20, 2025",
     readTime: "10 min read",
-    image: "/images/blog/image-optimization-2026.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/PRtHkOoPbUxCpTjv.png",
     category: "Web Development"
   },
   {
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 23, 2025",
     readTime: "11 min read",
-    image: "/images/blog/password-security-2025.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/ebuJBRgssVfKDtgW.png",
     category: "Security"
   },
   {
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 26, 2025",
     readTime: "10 min read",
-    image: "/images/blog/json-guide-beginners.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/dYnixfDYALojDhlB.png",
     category: "Web Development"
   },
   {
@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 29, 2025",
     readTime: "10 min read",
-    image: "/images/blog/qr-codes-2026.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/HtmfWablerZHQMxj.png",
     category: "Technology"
   },
   {
@@ -277,7 +277,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "January 01, 2026",
     readTime: "10 min read",
-    image: "/images/blog/pdf-workflows-teams.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/CcYmuLOPfIpNxyAn.png",
     category: "Productivity"
   },
   {
@@ -332,7 +332,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "January 04, 2026",
     readTime: "10 min read",
-    image: "/images/blog/unit-conversion-developer.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/RmJPmgRBdIGIOynp.png",
     category: "Web Development"
   },
   {
@@ -387,7 +387,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "January 07, 2026",
     readTime: "11 min read",
-    image: "/images/blog/content-creation-toolkit.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/AcKEgYLfXdYBPhUw.png",
     category: "Productivity"
   },
   {
@@ -442,7 +442,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "January 10, 2026",
     readTime: "11 min read",
-    image: "/images/blog/background-removal-ai.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/bixgYNnJwNPBFACD.png",
     category: "Design"
   },
   // --- 5 NEW ARTICLES (2025 Topics) ---
@@ -483,7 +483,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 17, 2025",
     readTime: "8 min read",
-    image: "/images/blog/ai-tools-productivity-2025.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/OprpsPThiJCCvErU.png",
     category: "Technology"
   },
   {
@@ -523,7 +523,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 13, 2025",
     readTime: "9 min read",
-    image: "/images/blog/remote-office-security-2025.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/wMkpzxnrRTBXvbZL.png",
     category: "Security"
   },
   {
@@ -563,7 +563,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 9, 2025",
     readTime: "7 min read",
-    image: "/images/blog/green-tech-sustainable.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/mUCfnwZbzzQDKKOz.png",
     category: "Sustainability"
   },
   {
@@ -603,7 +603,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 7, 2025",
     readTime: "8 min read",
-    image: "/images/blog/voice-search-seo-spoken-web.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/cyfTdMknYqABvfaB.png",
     category: "SEO"
   },
   {
@@ -643,7 +643,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "December 3, 2025",
     readTime: "10 min read",
-    image: "/images/blog/web3-basics.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/FjOyMMVypxQJyyQv.png",
     category: "Technology"
   },
 
@@ -683,7 +683,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 29, 2025",
     readTime: "7 min read",
-    image: "/images/blog/pdf-optimization.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/yNnDGwMQGDSOufJQ.png",
     category: "Productivity"
   },
   {
@@ -718,7 +718,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 23, 2025",
     readTime: "8 min read",
-    image: "/images/blog/image-formats-comparison.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/lDYBlXiIdqcVTjIo.png",
     category: "Design"
   },
   {
@@ -750,7 +750,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 17, 2025",
     readTime: "6 min read",
-    image: "/images/blog/password-security-2025.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/ebuJBRgssVfKDtgW.png",
     category: "Security"
   },
   {
@@ -782,7 +782,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 15, 2025",
     readTime: "5 min read",
-    image: "/images/blog/qr-codes-marketing.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/HGFTyLPCnnqnRjJE.png",
     category: "Marketing"
   },
   {
@@ -814,7 +814,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 10, 2025",
     readTime: "7 min read",
-    image: "/images/blog/json-xml.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/UHLykBFjoaxRhZQq.png",
     category: "Development"
   },
   {
@@ -847,7 +847,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 07, 2025",
     readTime: "6 min read",
-    image: "/images/blog/color-psychology.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/hPshqHCjKZSHudNQ.png",
     category: "Design"
   },
   {
@@ -878,7 +878,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 05, 2025",
     readTime: "8 min read",
-    image: "/images/blog/git-basics.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/AduWZubhTsduzYbi.png",
     category: "Development"
   },
   {
@@ -907,7 +907,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 05, 2025",
     readTime: "7 min read",
-    image: "/images/blog/seo-small-business.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/ZreTbLNhHImWuNGJ.png",
     category: "Marketing"
   },
   {
@@ -936,7 +936,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 04, 2025",
     readTime: "6 min read",
-    image: "/images/blog/digital-nomad.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/IgCMNhzopzLgVPhu.png",
     category: "Lifestyle"
   },
   {
@@ -965,7 +965,7 @@ export const blogPosts: BlogPost[] = [
     author: "ToolBox Team",
     date: "November 01, 2025",
     readTime: "7 min read",
-    image: "/images/blog/digital-privacy.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663322587851/sfjdwbAcYuoAbtHL.png",
     category: "Privacy"
   }
 ];
