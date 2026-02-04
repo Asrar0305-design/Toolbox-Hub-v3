@@ -4,9 +4,55 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '63618d8c-ef4d-47c1-932a-14bd01bc6e4d',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'New Contact Form Submission from ToolBox Hub'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setErrorMessage(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Network error. Please try again.');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
   return (
     <ToolLayout
       title="Contact Us"
@@ -34,7 +80,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="font-bold uppercase text-sm">Email Us</p>
-                <p className="text-muted-foreground">support@toolbox.hub</p>
+                <p className="text-muted-foreground">asrar0305@gmail.com</p>
               </div>
             </div>
             
@@ -50,24 +96,40 @@ export default function Contact() {
           </div>
         </div>
 
-        <form className="space-y-6 bg-gray-50 p-8 border-2 border-gray-100" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6 bg-gray-50 p-8 border-2 border-gray-100" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <Label htmlFor="name" className="font-bold uppercase">Name</Label>
-            <Input id="name" placeholder="Your name" className="bg-white border-2 border-black rounded-none h-12" />
+            <Input id="name" value={formData.name} onChange={handleChange} placeholder="Your name" className="bg-white border-2 border-black rounded-none h-12" required />
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="email" className="font-bold uppercase">Email</Label>
-            <Input id="email" type="email" placeholder="your@email.com" className="bg-white border-2 border-black rounded-none h-12" />
+            <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className="bg-white border-2 border-black rounded-none h-12" required />
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="message" className="font-bold uppercase">Message</Label>
-            <Textarea id="message" placeholder="How can we help?" className="bg-white border-2 border-black rounded-none min-h-[150px]" />
+            <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="How can we help?" className="bg-white border-2 border-black rounded-none min-h-[150px]" required />
           </div>
 
-          <Button className="w-full bg-primary hover:bg-black text-white font-bold uppercase tracking-wider rounded-none h-14 text-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all">
-            Send Message
+          {status === 'success' && (
+            <div className="bg-green-100 border-2 border-green-500 text-green-700 p-4 font-bold">
+              ✓ Message sent successfully! We'll get back to you soon.
+            </div>
+          )}
+          
+          {status === 'error' && (
+            <div className="bg-red-100 border-2 border-red-500 text-red-700 p-4 font-bold">
+              ✗ {errorMessage}
+            </div>
+          )}
+
+          <Button 
+            type="submit"
+            disabled={status === 'loading'}
+            className="w-full bg-primary hover:bg-black text-white font-bold uppercase tracking-wider rounded-none h-14 text-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {status === 'loading' ? 'Sending...' : 'Send Message'}
           </Button>
         </form>
       </div>
