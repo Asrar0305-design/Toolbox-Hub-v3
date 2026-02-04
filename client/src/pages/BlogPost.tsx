@@ -127,7 +127,7 @@ export default function BlogPost() {
                 .filter(p => p.slug !== post.slug && p.category === post.category)
                 .slice(0, 3)
                 .map(relatedPost => (
-                  <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`}>
+                  <a key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} onClick={() => window.scrollTo(0, 0)}>
                     <div className="group block bg-white rounded-xl border hover:shadow-lg transition-all overflow-hidden cursor-pointer">
                       <div className="aspect-video overflow-hidden">
                         <img 
@@ -144,7 +144,7 @@ export default function BlogPost() {
                         <p className="text-xs text-muted-foreground">{relatedPost.readTime}</p>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
             </div>
           </div>
