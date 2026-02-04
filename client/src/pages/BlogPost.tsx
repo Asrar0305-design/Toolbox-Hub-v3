@@ -100,8 +100,13 @@ export default function BlogPost() {
               />
             </div>
 
+            <style>{`
+              .blog-content p { margin-bottom: 1.5rem; }
+              .blog-content h2 { margin-top: 2.5rem; margin-bottom: 1.5rem; }
+              .blog-content h3 { margin-top: 2rem; margin-bottom: 1rem; }
+            `}</style>
             <div 
-              className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl prose-strong:font-bold prose-strong:text-foreground [&_p]:mb-6 [&_h2]:mt-10 [&_h2]:mb-6 [&_h3]:mt-8 [&_h3]:mb-4"
+              className="blog-content prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl prose-strong:font-bold prose-strong:text-foreground"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>
