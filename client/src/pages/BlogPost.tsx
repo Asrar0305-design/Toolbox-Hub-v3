@@ -101,9 +101,11 @@ export default function BlogPost() {
             </div>
 
             <style>{`
-              .blog-content p { margin-bottom: 1.5rem; }
-              .blog-content h2 { margin-top: 2.5rem; margin-bottom: 1.5rem; }
-              .blog-content h3 { margin-top: 2rem; margin-bottom: 1rem; }
+              .blog-content p { margin-bottom: 1.5rem !important; line-height: 1.8 !important; }
+              .blog-content h2 { margin-top: 2.5rem !important; margin-bottom: 1.5rem !important; font-weight: 700 !important; }
+              .blog-content h3 { margin-top: 2rem !important; margin-bottom: 1rem !important; font-weight: 700 !important; }
+              .blog-content ul, .blog-content ol { margin-bottom: 1.5rem !important; }
+              .blog-content li { margin-bottom: 0.5rem !important; }
             `}</style>
             <div 
               className="blog-content prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl prose-strong:font-bold prose-strong:text-foreground"
