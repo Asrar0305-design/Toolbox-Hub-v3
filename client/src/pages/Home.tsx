@@ -488,6 +488,104 @@ export default function Home() {
         <SocialShare />
       </main>
 
+      {/* FAQ Section */}
+      <section className="py-24 bg-white border-t-4 border-black" style={{backgroundColor: '#ffffff', borderColor: '#000000'}}>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4" style={{color: '#000000'}}>
+                Frequently Asked <span className="text-primary" style={{color: '#ff6900'}}>Questions</span>
+              </h2>
+              <p className="text-xl text-muted-foreground" style={{color: '#6b7280'}}>
+                Everything you need to know about ToolBox Hub
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  Are your tools really free?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  Yes! All our core tools are 100% free to use with no hidden costs, subscriptions, or premium tiers. We believe essential digital utilities should be accessible to everyone. Our platform is supported by unobtrusive advertising, which allows us to keep all tools free forever while maintaining high-quality service.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  Is my data safe and private?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  Absolutely! Most of our tools process data entirely in your browser using WebAssembly and client-side JavaScript. This means your files never leave your device and never touch our servers. For tools that require server processing (like AI-powered features), we use secure, encrypted connections and immediately delete your data after processing. We don't store, analyze, or share your files with third parties.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  Do I need to create an account?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  No registration required! You can use all our tools immediately without creating an account, providing an email address, or sharing any personal information. We designed ToolBox Hub to be as frictionless as possible—just visit, use the tool you need, and get your work done. No sign-ups, no paywalls, no hassle.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  What file formats do you support?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  We support a wide range of popular formats. Our Image Converter handles PNG, JPG, JPEG, WEBP, GIF, BMP, and AVIF. PDF Tools work with standard PDF documents. Our JSON Formatter validates and beautifies JSON data. QR Generator creates QR codes for URLs, text, Wi-Fi credentials, and contact information. Each tool page lists its specific supported formats and features.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  Are there any file size limits?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  For client-side tools that process data in your browser, the only limit is your device's available memory. Most modern devices can handle files up to several hundred megabytes without issues. For server-side tools (like AI-powered background removal), we have reasonable limits to ensure fast processing for all users—typically 10-50MB depending on the tool. These limits are clearly displayed on each tool page.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  Can I use these tools for commercial projects?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  Yes! You're free to use our tools for both personal and commercial projects. Whether you're a freelancer, small business owner, or part of a large enterprise, you can use ToolBox Hub to process images, generate QR codes, format data, and more without any licensing restrictions. The files you create using our tools are 100% yours to use however you like.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  Do your tools work offline?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  Many of our client-side tools can work offline once the page is loaded, thanks to modern browser caching. However, you'll need an initial internet connection to load the tool. Tools that require server processing (like AI features) need an active internet connection. We're continuously working to improve offline capabilities through Progressive Web App (PWA) technology.
+                </p>
+              </details>
+
+              <details className="group border-4 border-black bg-white p-6 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all" style={{borderColor: '#000000', backgroundColor: '#ffffff'}}>
+                <summary className="flex justify-between items-center cursor-pointer font-bold text-xl uppercase tracking-tight" style={{color: '#000000'}}>
+                  How can I request a new tool or feature?
+                  <span className="text-primary text-3xl group-open:rotate-45 transition-transform" style={{color: '#ff6900'}}>+</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed" style={{color: '#6b7280'}}>
+                  We love hearing from our users! If you have an idea for a new tool or want to suggest improvements to existing ones, please visit our Contact page or reach out through our social media channels. We actively prioritize features based on user demand and feasibility. Many of our most popular tools were built directly from user suggestions.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black text-white py-16 border-t-4 border-black" style={{backgroundColor: '#000000', color: '#ffffff', borderColor: '#000000'}}>
         <div className="container mx-auto px-4">
