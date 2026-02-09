@@ -1,6 +1,7 @@
 import { ToolLayout } from "@/components/ToolLayout";
 import { SeoHead } from "@/components/SeoHead";
 import { CheckCircle2, Zap, Shield, Globe } from "lucide-react";
+import { DonationButtonInline } from "@/components/DonationButton";
 
 export default function About() {
   return (
@@ -206,6 +207,7 @@ export default function About() {
             >
               Help Center
             </a>
+            <DonationButtonInline />
           </div>
         </div>
       </div>

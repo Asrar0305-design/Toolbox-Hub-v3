@@ -3,6 +3,8 @@ import { ArrowRight, Image as ImageIcon, FileText, QrCode, FileJson, Code2, Zap,
 import { Button } from "@/components/ui/button";
 import { SocialShare } from "@/components/SocialShare";
 import { SeoHead } from "@/components/SeoHead";
+import { DonationWidget } from "@/components/DonationWidget";
+import { DonationButtonInline } from "@/components/DonationButton";
 
 const tools = [
   {
@@ -154,6 +156,7 @@ const tools = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-primary selection:text-white" style={{backgroundColor: '#ffffff', color: '#000000'}}>
+      <DonationWidget />
       <SeoHead 
         title="Free Online Utilities & Developer Tools - ToolBox Hub"
         description="ToolBox Hub offers free, secure, and instant online tools including Image Converter, PDF Tools, QR Generator, and JSON Formatter. No sign-up required."
@@ -207,6 +210,7 @@ export default function Home() {
                     Read Blog
                   </Button>
                 </Link>
+                <DonationButtonInline />
               </div>
             </div>
             
