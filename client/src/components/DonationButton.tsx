@@ -37,7 +37,7 @@ export function DonationButtonInline() {
       href="https://www.buymeacoffee.com/ToolBoxHub" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-bold uppercase tracking-wider rounded-none border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
+      className="w-full sm:w-auto h-16 px-8 text-lg inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-bold uppercase tracking-wider rounded-none border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
     >
       <Coffee className="w-5 h-5" />
       Buy me a coffee
